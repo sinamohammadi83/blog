@@ -1,0 +1,47 @@
+.icon-edit{
+    width: 20px;
+}
+
+.icon-comment{
+    width: 20px;
+}
+
+.icon-view{
+    width: 25px;
+}
+
+.icon-delete{
+    width: 15px;
+}
+
+.newcheckbox
+{
+    -webkit-appearance: none;
+    height: 21px;
+    width: 50px;
+    border: 3px solid #ececee;
+    box-shadow: 0px 0px 2px rgb(156, 156, 156);
+    outline: none;
+    cursor: pointer;
+    border-radius: 45px;
+}
+.newcheckbox::before,
+.newcheckbox::after{
+    content: "";
+    position: absolute;
+    margin: auto;
+    transition: 0.3s;
+}
+
+
+.newcheckbox::after{
+    height: 15px;
+    width: 15px;
+    background-color: #db6565;
+    border-radius: 50%;
+}
+
+.newcheckbox:checked::after{
+    margin-right: 28px;
+    background-color: #55f696;
+}
