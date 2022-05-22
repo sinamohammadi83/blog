@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="/client/css/post.css">
+    <link rel="stylesheet" href="/client/css/comment.css">
 @endsection
 
 @section('content')
@@ -24,10 +25,22 @@
                 <div class="bg-white rounded text-end p-2">
                     {{$comment->content}}
                 </div>
-                <button class="color-6 col-2 rounded mt-2 justify-content-center p-2 d-flex reply border-0">
+                <button class="color-6 col-2 rounded mt-2 justify-content-center p-2 d-flex reply border-0" data-comment-id="{{$comment->id}}">
                     پاسخ
                     <img src="/website/icon/icon_sort_down.png" width="15px" class="h-50 mt-1" alt="">
                 </button>
+                <div class="col-12 bg-white mt-3 p-3 rounded" style="display: none" id="reply-{{$comment->id}}">
+                    <p class="text-end">پاسخ</p>
+                    <form action="{{route('client.comment.reply',['post' => $post,'comment' => $comment])}}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <textarea class="form-control" name="content" rows="5"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="ثبت" class="btn btn-info">
+                        </div>
+                    </form>
+                </div>
                 <div class="mt-3 rounded-7 color-7 ">
                     <form action="{{route('client.comment.destroy',['post' => $post ,'comment' => $comment])}}" method="post">
                         @csrf
@@ -57,6 +70,22 @@
                     </div>
                     <div class="bg-white rounded text-end p-2">
                         {{$parentcomment->content}}
+                    </div>
+                    <button class="color-6 col-2 rounded mt-2 justify-content-center p-2 d-flex reply border-0" data-comment-id="{{$parentcomment->id}}">
+                        پاسخ
+                        <img src="/website/icon/icon_sort_down.png" width="15px" class="h-50 mt-1" alt="">
+                    </button>
+                    <div class="col-12 bg-white mt-3 p-3 rounded" style="display: none" id="reply-{{$parentcomment->id}}">
+                        <p class="text-end">پاسخ</p>
+                        <form action="{{route('client.comment.reply',['post' => $post,'comment' => $parentcomment])}}" method="post">
+                            @csrf
+                            <div class="form-group">
+                                <textarea class="form-control" name="content" rows="5"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="ثبت" class="btn btn-info">
+                            </div>
+                        </form>
                     </div>
                     <div class="mt-3 rounded-7 color-7 ">
                         <form action="{{route('client.comment.destroy',['post' => $post ,'comment' => $parentcomment])}}" method="post">
@@ -105,3 +134,8 @@
     </div>
 
 @endsection
+
+@section('js')
+    <script src="/client/js/comment.js"></script>
+@endsection
+

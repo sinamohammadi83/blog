@@ -32,4 +32,16 @@ class CommentController extends Controller
 
         return back();
     }
+
+    public function reply(Post $post,Comment $comment,Request $request)
+    {
+        Comment::query()->create([
+            'comment_id' => $comment->id,
+            'post_id' => $post->id,
+            'content' => $request->get('content'),
+            'user_id' => auth()->id()
+        ]);
+
+        return back();
+    }
 }

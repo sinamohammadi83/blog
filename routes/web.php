@@ -173,6 +173,7 @@ Route::prefix('/panel')->name('client.')->middleware(['auth',CheckPermissionMidd
 
     Route::controller(ClientCommentController::class)->name('comment.')->group(function (){
         Route::get('/post/{post}/comments','index')->name('index');
+        Route::post('/post/{post}/comment/{comment}','reply')->name('reply')->scopeBindings();
         Route::delete('/post/{post}/comment/{comment}','destroy')->name('destroy');
     });
 
