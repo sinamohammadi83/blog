@@ -125,7 +125,10 @@ class UserController extends Controller
 
         $user->saves()->detach();
 
-        $user->comments()->delete();
+        foreach ($user->comments()->get() as $comment)
+        {
+            (new CommentController())->destroy($comment->post,$comment);
+        }
 
         $user->startsupports()->delete();
 

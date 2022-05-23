@@ -130,7 +130,10 @@ class PostController extends Controller
 
         $post->saves()->detach();
 
-        $post->comments()->delete();
+        foreach ($post->comments()->get() as $comment)
+        {
+            (new CommentController())->destroy($comment->post,$comment);
+        }
 
         $post->delete();
 

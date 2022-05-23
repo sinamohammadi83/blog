@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -40,5 +41,7 @@ class AppServiceProvider extends ServiceProvider
                 'minipanel' => request()->cookie('mini_menu')=='true'
             ]);
         });
+
+        Paginator::useBootstrap();
     }
 }

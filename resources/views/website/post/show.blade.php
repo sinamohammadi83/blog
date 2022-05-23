@@ -40,12 +40,8 @@
             </div>
             <div class="d-md-flex col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 p-0 pe-xl-5 mt-5">
                 @auth
-                    <div class="text-center col-xl-4 col-lg-3 col-md-3 col-12 col-sm-12">
-                        <div class="post-saved @if($post->hasSave()) save @endif mt-2"></div>
-                        <span id="count-like">{{$post->like->count()}}</span><div class="post-heart @if($post->hasLike()) like @endif" id="post-{{$post->slug}}"></div>
-                    </div>
+                    <livewire:website.post.post-like-save :post="$post"/>
                 @endauth
-
                 <div class=" col-xl-4 col-lg-4 font-13 col-md-4 col-sm-12 col-12 p-2 text-center">
                     تاریخ انتشار:{{$post->created_at}}
                 </div>
@@ -181,40 +177,4 @@
 
 @section('js')
     <script src="/website/js/post.js"></script>
-
-    <script>
-        $('.post-saved').click(function (){
-            $.ajax({
-                method: 'post',
-                url:'{{route('website.save.store')}}?post={{$post->slug}}',
-                data:{
-                    _token : '{{csrf_token()}}'
-                },
-                success : () => {
-                    if($(this).hasClass('save')) {
-                        $(this).removeClass('save')
-                    }else {
-                        $(this).addClass('save')
-                    }
-                }
-            })
-        })
-        $('.post-heart').click(function (){
-            $.ajax({
-                method: 'post',
-                url:'{{route('website.like.store')}}?post={{$post->slug}}',
-                data:{
-                    _token : '{{csrf_token()}}'
-                },
-                success : (res) => {
-                    if($(this).hasClass('like')) {
-                        $(this).removeClass('like')
-                    }else {
-                        $(this).addClass('like')
-                    }
-                    $('#count-like').text(res.data.likes.count)
-                }
-            })
-        })
-    </script>
 @endsection

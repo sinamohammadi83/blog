@@ -17,11 +17,12 @@ class HomeController extends Controller
                 ->withExists(['like','saves'])
                 ->where('is_published',1)
                 ->orderByDesc('id')
-                ->limit(6)
+                ->take(6)
                 ->get(),
             'popularPost' => Post::query()
                 ->orderByDesc('countLike')
-                ->paginate(6)
+                ->take(6)
+                ->get()
         ]);
     }
 

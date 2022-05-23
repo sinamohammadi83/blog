@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +7,7 @@
     <link rel="stylesheet" href="/website/css/style.css">
     <link rel="stylesheet" href="/website/css/bootstrap.min.css">
     @yield('css')
+    @livewireStyles
     <title>@yield('title')وبلاگ </title>
 </head>
 <body dir="rtl">
@@ -39,11 +41,11 @@
                 </div>
             @endauth
         </div>
-        <div class="bg-white float-start  position-absolute text-center rounded dropdown-account p-1 pb-0 border border-dark" style="display: none;">
+        <div class="bg-white float-start position-absolute text-center rounded dropdown-account p-2 pb-0 border border-dark" style="display: none;">
             @can('view-client-dashboard')
                 <div class="border-dark border-bottom p-2"><a href="{{route('client.home')}}" class="text-dark text-decoration-none">پنل کاربری</a></div>
             @endcan
-            <div class="border-dark pt-1 mt-2 bg-danger rounded text-white font-13">
+            <div class="border-dark pt-1 mt-2 bg-danger mb-2 rounded text-white font-13">
                 <form action="{{route('website.logout')}}" method="post">
                     @csrf
                     @method('DELETE')
@@ -151,5 +153,6 @@
     });
 </script>
 @yield('js')
+@livewireScripts
 </body>
 </html>
