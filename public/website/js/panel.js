@@ -58,6 +58,7 @@ $('.icon_menu_panel').click(function (){
     {
         $(this).removeClass('active')
         $('.icon-dropdown-menu').removeClass('d-none')
+        $('.panel_right').removeClass('text-center')
         $('.panel_left').attr('style','')
         $('.panel_right').attr('style','')
         $('.option_panel').removeClass('d-none')
@@ -66,6 +67,7 @@ $('.icon_menu_panel').click(function (){
     }else {
         $(this).addClass('active')
         $('.icon-dropdown-menu').addClass('d-none')
+        $('.panel_right').addClass('text-center')
         $('.panel_left').css('width','92%')
         $('.panel_right').css('width','50px')
         $('.option_panel').addClass('d-none')
@@ -75,5 +77,4 @@ $('.icon_menu_panel').click(function (){
         $('.dropdown').children().removeClass('col-xl-9')
     }
 })
-
 

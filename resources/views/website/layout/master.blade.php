@@ -98,54 +98,13 @@
                 <div class="fast-ability-items"><a href="{{route('website.login.create')}}">ورود</a></div>
                 <div class="fast-ability-items"><a href="{{route('website.register.create')}}">عضویت</a></div>
             </div>
-            <div class="news-letters float-start col-xl-6 col-lg-6 col-md-8 col-sm-12 ps-sm-5 col-12 text-end text-sm-center mt-sm-2 mt-5">
-                <form method="post" class="text-sm-center pe-2">
-                    <input type="email" class="input-email-news col-xl-7 col-lg-10 col-md-7 col-sm-7 col-9" id="" placeholder="عضویت در خبرنامه">
-                    <input type="button" value="عضویت" class="button-news ">
-                    <div class="tooltip-newsletter text-sm-center col-sm-12 text-md-center me-md-4 col-12 ">برای اطلاع از اخبار جدید ایمیل خود را برای عضویت وارد نمایید.</div>
-                </form>
-                <div class="error-news-letters d-none bg-danger col-9 mt-3 rounded p-2 text-white ms-5 float-start">
-
-                </div>
-                <div class="success-news-letters d-none bg-success col-9 mt-3 rounded p-2 text-white ms-5 float-start">
-
-                </div>
-            </div>
+            <livewire:website.newsletter/>
             <div class="rules col-12 mt-3 d-inline-block p-3">تمامی حقوق این وب سایت متعلق به هنرستان شهید عابدینی می باشد و هرگونه کپی برداری از سایت با ذکر منبع بلامانع است و در غیر این صورت پیگرد قانونی دارد.</div>
         </div>
     </footer>
 </div>
 <script src="/website/js/jquery-3.6.0.min.js"></script>
 <script src="/website/js/js.js"></script>
-<script>
-    $('.button-news').click(function (){
-        let email = $('.input-email-news')
-        $.ajax({
-            method:'post',
-            url:'{{route('website.newsletter.store')}}',
-            data:{
-                email:email.val(),
-                _token:'{{csrf_token()}}'
-            },
-            success : (res) => {
-                $('.error-news-letters').addClass('d-none')
-                $('.success-news-letters').text(res.data.message)
-                $('.success-news-letters').removeClass('d-none')
-            },
-            error:(res) => {
-                let errors =JSON.parse(res.responseText)
-                let text = ''
-                for (let error of errors.errors.email)
-                {
-                    text+=error+'<br>'
-                }
-                $('.success-news-letters').addClass('d-none')
-                $('.error-news-letters').removeClass('d-none')
-                $('.error-news-letters').html(text)
-            }
-        })
-    })
-</script>
 <script>
     $(document).ready(function (){
         $('.loader').fadeOut(300)

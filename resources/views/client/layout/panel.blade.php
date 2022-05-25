@@ -1,4 +1,4 @@
-<div class="panel_right col-xl-4 col-lg-4 color-2 m-2 d-inline-block d-none d-lg-block p-2 rounded-3" @if($minipanel) style="width: 50px;" @endif>
+<div class="panel_right @if($minipanel) text-center @endif pe-2 col-xl-4 col-lg-4 color-2 m-2 d-inline-block d-none d-lg-block p-2 rounded-3 justify-content-center" @if($minipanel) style="width: 50px;" @endif>
     <div>
         <img src="/website/icon/icon_menu.png" class="width-30 icon_menu_panel @if($minipanel) active @endif" alt="">
     </div>
@@ -74,7 +74,7 @@
     </div>
     @endcanany
     @canany(['read-gallery','create-gallery'])
-        <div class="mt-3 menu-dropdown" id="menu-5"><img src="/website/icon/gallery.png" alt="گالری ها" class="width-25 ms-1"><span class="option_panel @if($minipanel) d-none @endif">گالری</span> <img src="/website/icon/icon_sort_down.png" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'client.gallery.create' || \Illuminate\Support\Facades\Route::currentRouteName() == 'client.gallery.index') style="transform: rotate(180deg)" @endif class="float-start icon-dropdown-menu @if($minipanel) d-none @endif icon-dropdowm-5 width-20" alt=""></div>
+        <div class="mt-3 menu-dropdown" id="menu-5"><img src="/website/icon/gallery.png" alt="گالری ها" class="width-25"><span class="option_panel @if($minipanel) d-none @endif">گالری</span> <img src="/website/icon/icon_sort_down.png" @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'client.gallery.create' || \Illuminate\Support\Facades\Route::currentRouteName() == 'client.gallery.index') style="transform: rotate(180deg)" @endif class="float-start icon-dropdown-menu @if($minipanel) d-none @endif icon-dropdowm-5 width-20" alt=""></div>
         <div id="dropdown-5" class="dropdown @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'client.gallery.create' || \Illuminate\Support\Facades\Route::currentRouteName() == 'client.gallery.index' && !$minipanel) active @endif @if($minipanel) position-absolute bg-white border border-dark rounded-3 @endif" @if(\Illuminate\Support\Facades\Route::currentRouteName() != 'client.gallery.index' && \Illuminate\Support\Facades\Route::currentRouteName() != 'client.gallery.create' || $minipanel)  style="display: none;" @endif>
             @can('create-gallery')
                 <div class="p-1 me-4 m-3 rounded @if(!$minipanel) col-xl-9 @endif color-4 @if(\Illuminate\Support\Facades\Route::currentRouteName() == 'client.gallery.create') color-8 @endif text-center">
@@ -90,32 +90,32 @@
     @endcanany
     <div class="mt-3">
         <a href="{{route('client.save.index')}}" class="text-decoration-none text-dark">
-            <img src="/website/icon/save.png" alt="پست های ذخیره شده" class="width-20 ms-1"><span class="option_panel @if($minipanel) d-none @endif">پست های ذخیره شده</span>
+            <img src="/website/icon/save.png" alt="پست های ذخیره شده" class="width-20"><span class="option_panel @if($minipanel) d-none @endif">پست های ذخیره شده</span>
         </a>
     </div>
 
     <div class="mt-3">
         <a href="{{route('client.mysupport.index')}}" class="text-decoration-none text-dark">
-            <img src="/website/icon/support.png" alt="پشتیبانی" class="width-20 ms-1"><span class="option_panel @if($minipanel) d-none @endif">پشتیبانی</span>
+            <img src="/website/icon/support.png" alt="پشتیبانی" class="width-20"><span class="option_panel @if($minipanel) d-none @endif">پشتیبانی</span>
         </a>
     </div>
 
     @can('read-support')
         <div class="mt-3">
             <a href="{{route('client.support.index')}}" class="text-decoration-none text-dark">
-                <img src="/website/icon/support1.png" alt="لیست درخواست های پشتیبانی" class="width-20 ms-1"><span class="option_panel @if($minipanel) d-none @endif">لیست درخواست های پشتیبانی</span>
+                <img src="/website/icon/support1.png" alt="لیست درخواست های پشتیبانی" class="width-20"><span class="option_panel @if($minipanel) d-none @endif">لیست درخواست های پشتیبانی</span>
             </a>
         </div>
     @endcan
 
 
-    <div class="mt-3"><a href="/" class="text-decoration-none text-dark"><img src="/website/icon/back.png" alt="بازگشت به سایت" class="width-20 ms-2"><span class="option_panel @if($minipanel) d-none @endif">بازگشت به سایت</span></a></div>
+    <div class="mt-3"><a href="/" class="text-decoration-none text-dark"><img src="/website/icon/back.png" alt="بازگشت به سایت" class="width-20"><span class="option_panel @if($minipanel) d-none @endif">بازگشت به سایت</span></a></div>
 
     <div class="mt-3">
         <form action="{{route('website.logout')}}" method="post">
             @csrf
             @method('DELETE')
-            <button type="submit" class="text-dark btn p-0"><img src="/website/icon/logout.png" alt="بازگشت به سایت" class="width-25 ms-2"><span class="option_panel @if($minipanel) d-none @endif">خروج از حساب کاربری</span></button>
+            <button type="submit" class="text-dark btn p-0"><img src="/website/icon/logout.png" alt="بازگشت به سایت" class="width-25"><span class="option_panel @if($minipanel) d-none @endif">خروج از حساب کاربری</span></button>
         </form>
     </div>
 </div>
