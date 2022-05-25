@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/client/css/bootstrap.min.css">
     <link rel="stylesheet" href="/client/css/panel.css">
     @yield('css')
+    @livewireStyles
     <title>پنل کاربری</title>
 </head>
 <body dir="rtl">
@@ -58,5 +59,6 @@
 </script>
 <script src="/website/js/panel.js"></script>
 @yield('js')
+@livewireScripts
 </body>
 </html>

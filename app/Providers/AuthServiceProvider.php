@@ -164,6 +164,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
 
+        Gate::define('delete-comment',function (){
+            return auth()->user()->role->haspermission('delete-comment');
+        });
+
+        
         Gate::define('view-client-dashboard',function (){
             return auth()->user()->role->haspermission('view-client-dashboard');
         });

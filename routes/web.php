@@ -201,5 +201,3 @@ Route::prefix('/panel')->name('client.')->middleware(['auth',CheckPermissionMidd
         Route::post('/support/{startSupport}/reply','reply')->name('reply');
     });
 });
-
-

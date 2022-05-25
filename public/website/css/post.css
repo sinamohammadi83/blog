@@ -13,6 +13,10 @@
     text-align: justify;
 }
 
+.color-7{
+    background-color: #EA2027;
+}
+
 .active{
     display: block;
 }

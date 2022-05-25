@@ -156,6 +156,12 @@ class PermissionSeeder extends Seeder
 
             //دسترسی مربوط به پنل کاربری
             [
+                'title' => 'delete-comment',
+                'label' => 'حذف نظر'
+            ],
+
+            //دسترسی مربوط به پنل کاربری
+            [
                 'title' => 'view-client-dashboard',
                 'label' => 'پنل کاربری'
             ]
