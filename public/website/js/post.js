@@ -1,5 +1,7 @@
-$('.reply').click(function(){
-    let reply_id = splitId(this.id)
+
+function reply(reply)
+{
+    let reply_id = splitId(reply.id)
     if($('#reply-'+reply_id).hasClass('active')){
         $('#icon-reply-'+reply_id).removeClass('d-none')
         $('#icon-close-reply-'+reply_id).addClass('d-none')
@@ -10,5 +12,5 @@ $('.reply').click(function(){
         $('#icon-close-reply-'+reply_id).removeClass('d-none')
         $('#reply-'+reply_id).addClass('active')
         $('#reply-'+reply_id).slideDown()
-    }
-})
+        }
+}

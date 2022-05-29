@@ -1,16 +1,16 @@
-$('.reply').click(function (){
-    let comment= $('#reply-'+$(this).attr('data-comment-id'))
+function reply(reply){
+    let comment= $('#reply-'+$(reply).attr('data-comment-id'))
 
     if (comment.hasClass('active'))
     {
-        $(this).children().removeClass('rotate')
+        $(reply).children().removeClass('rotate')
         comment.slideUp()
         comment.removeClass('active')
     }else {
-        $(this).children().addClass('rotate')
+        $(reply).children().addClass('rotate')
         comment.slideDown()
         comment.addClass('active')
     }
 
 
-})
+}

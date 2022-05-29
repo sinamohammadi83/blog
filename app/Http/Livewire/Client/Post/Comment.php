@@ -10,6 +10,20 @@ class Comment extends Component
 {
     public Post $post;
 
+    public $content;
+
+    public function reply(ModelsComment $comment)
+    {
+        ModelsComment::query()->create([
+            'comment_id' => $comment->id,
+            'post_id' => $this->post->id,
+            'content' => $this->content,
+            'user_id' => auth()->id()
+        ]);
+
+        $this->content = '';
+    }
+
     public function delete(ModelsComment $comment)
     {
         $comments = $comment->comments()->get();

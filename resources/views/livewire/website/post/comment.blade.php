@@ -5,7 +5,7 @@
             <div class="float-start bg-danger rounded">
                 <button class="color-7 border-0 p-2 rounded" wire:click="delete({{$comment->id}})"><img src="/website/icon/delete_1.png" alt=""></button>
             </div>
-        @endcan    
+        @endcan
         <div class="float-end col-xl-1 col-lg-2 col-md-2 col-sm-2 col-3 text-end text-lg-center">
             <img src="{{$comment->user->ImagePath}}" class="img-thumbnail col-xl-8 col-10 col-lg-8 col-md-8 col-sm-11 mt-2 rounded" alt="{{$comment->user->name}} {{$comment->user->family}}">
         </div>
@@ -16,10 +16,10 @@
             </div>
         </div>
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center p-xl-3">
-            <div class="cursor-pointer mt-3 reply" id="icon-reply-{{$comment->id}}">
+            <div class="cursor-pointer mt-3 reply" onclick="reply(this)" id="icon-reply-{{$comment->id}}">
                 <img src="/website/icon/reply.png" class="icon-reply" alt="">پاسخ
             </div>
-            <div class="cursor-pointer mt-3 d-none reply" id="icon-close-reply-{{$comment->id}}">
+            <div class="cursor-pointer mt-3 d-none reply" onclick="reply(this)" id="icon-close-reply-{{$comment->id}}">
                 <img src="/website/icon/icon_close.png" class="icon-reply" alt="">بستن
             </div>
         </div>
@@ -29,10 +29,10 @@
                 @csrf
                 <div class="form-group">
                     <label for="">متن نظر<span class="text-danger">*</span></label>
-                    <textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="content" id="" cols="30" rows="10" class="form-control" wire:model.lazy="content"></textarea>
                 </div>
                 <div class="form-group">
-                    <input type="submit" class="rounded border-0 shadow-lg mt-2 submit-comment col-xl-1 col-lg-1 col-md-2 col-sm-2 col-3" value="ثبت">
+                    <input type="button" wire:click="reply({{$comment->id}})" class="rounded border-0 shadow-lg mt-2 submit-comment col-xl-1 col-lg-1 col-md-2 col-sm-2 col-3" value="ثبت">
                 </div>
             </form>
             @else
@@ -58,10 +58,10 @@
                     </div>
                 </div>
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center p-xl-3">
-                    <div class="cursor-pointer mt-3 reply" id="icon-reply-{{$parentcomment->id}}">
+                    <div class="cursor-pointer mt-3 reply" onclick="reply(this)" id="icon-reply-{{$parentcomment->id}}">
                         <img src="/website/icon/reply.png" class="icon-reply" alt="">پاسخ
                     </div>
-                    <div class="cursor-pointer mt-3 d-none reply" id="icon-close-reply-{{$parentcomment->id}}">
+                    <div class="cursor-pointer mt-3 d-none reply" onclick="reply(this)" id="icon-close-reply-{{$parentcomment->id}}">
                         <img src="/website/icon/icon_close.png" class="icon-reply" alt="">بستن
                     </div>
                 </div>
@@ -71,10 +71,10 @@
                         @csrf
                         <div class="form-group">
                             <label for="">متن نظر<span class="text-danger">*</span></label>
-                            <textarea name="content" id="" cols="30" rows="10" class="form-control"></textarea>
+                            <textarea name="content" id="" cols="30" rows="10" wire:model.lazy="content" class="form-control"></textarea>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="rounded border-0 shadow-lg mt-2 submit-comment col-xl-1 col-lg-1 col-md-2 col-sm-2 col-3" value="ثبت">
+                            <input type="button" wire:click="reply({{$parentcomment->id}})" class="rounded border-0 shadow-lg mt-2 submit-comment col-xl-1 col-lg-1 col-md-2 col-sm-2 col-3" value="ثبت">
                         </div>
                     </form>
                     @else

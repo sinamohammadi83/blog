@@ -154,10 +154,32 @@ class PermissionSeeder extends Seeder
                 'label' => 'حذف درخواست پشتیبانی'
             ],
 
-            //دسترسی مربوط به پنل کاربری
+            //دسترسی مربوط به بخش نظرات
+            [
+                'title' => 'read-comment',
+                'label' => 'مشاهده نظر'
+            ],
+            [
+                'title' => 'reply-comment',
+                'label' => 'پاسخ به نظر'
+            ],
             [
                 'title' => 'delete-comment',
                 'label' => 'حذف نظر'
+            ],
+
+            //دسترسی مربوط به پنل کاربری
+            [
+                'title' => 'read-self-comment',
+                'label' => 'مشاهده نظر پست خود کاربر'
+            ],
+            [
+                'title' => 'reply-self-comment',
+                'label' => 'پاسخ به نظر پست خود کاربر'
+            ],
+            [
+                'title' => 'delete-self-comment',
+                'label' => 'حذف نظر پست خود کاربر'
             ],
 
             //دسترسی مربوط به پنل کاربری

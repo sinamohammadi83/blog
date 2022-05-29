@@ -27,6 +27,12 @@
                         </div>
                     </div>
                     <hr>
+                    <div>نام کاربری:
+                        <div>
+                            {{$user->username}}
+                        </div>
+                    </div>
+                    <hr>
                     <div>نقش:{{$user->role->title}}</div>
                 </div>
                 @can('update-user')

@@ -66,17 +66,10 @@ Route::prefix('')->name('website.')->group(function (){
         Route::get('/post/{post}','show')->name('show');
     });
 
-    Route::post('/post/like',[LikeController::class,'store'])->name('like.store');
-
-    Route::post('/post/save',[SaveController::class,'store'])->name('save.store');
-
     Route::controller(CommentController::class)->name('comment.')->group(function (){
         Route::post('/post/{post}/comment','store')->name('store');
         Route::post('/post/{post}/comment/{comment}','awnser')->name('awnser');
     });
-
-    Route::post('/newpost',[HomeController::class,'moreNewPost'])->name('newpost');
-    Route::post('/popularpost',[HomeController::class,'morePopularPost'])->name('popularpost');
 
     Route::controller(\App\Http\Controllers\Website\ContactController::class)->name('contact.')->group(function (){
         Route::get('/contact','create')->name('create');
@@ -86,8 +79,6 @@ Route::prefix('')->name('website.')->group(function (){
     Route::view('/aboutus','website.aboutus.show')->name('aboutus.show');
 
     Route::get('/search',[SearchController::class,'index'])->name('search.index');
-
-    Route::post('/newsletter',[\App\Http\Controllers\Website\NewslettersController::class,'store'])->name('newsletter.store');
 
     Route::get('/category/{category}',[CategoryController::class,'show'])->name('category.show');
 
@@ -173,13 +164,10 @@ Route::prefix('/panel')->name('client.')->middleware(['auth',CheckPermissionMidd
 
     Route::controller(ClientCommentController::class)->name('comment.')->group(function (){
         Route::get('/post/{post}/comments','index')->name('index');
-        Route::post('/post/{post}/comment/{comment}','reply')->name('reply')->scopeBindings();
-        Route::delete('/post/{post}/comment/{comment}','destroy')->name('destroy');
     });
 
     Route::controller(ClientMyCommentController::class)->name('mycomment.')->group(function (){
         Route::get('/mypost/{post}/comments','index')->name('index');
-        Route::delete('/mypost/{post}/comment/{comment}','destroy')->name('destroy');
     });
 
     Route::controller(ClientProfileController::class)->name('profile.')->group(function (){
@@ -200,4 +188,6 @@ Route::prefix('/panel')->name('client.')->middleware(['auth',CheckPermissionMidd
         Route::get('/support/{startSupport}','show')->name('show');
         Route::post('/support/{startSupport}/reply','reply')->name('reply');
     });
+
+
 });
